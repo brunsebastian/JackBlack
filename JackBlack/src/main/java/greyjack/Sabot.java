@@ -61,7 +61,9 @@ public class Sabot {
 	}
 	
 	/*
-	 * 
+	 * Fonction utilisée uniquement dans les tests unitaires : affiche toutes les cartes comprises entre 2 rangs
+	 * @param rangDebut 
+	 * @param rangFin
 	 */
 	public void afficherCartesEntre (int rangDebut , int rangFin) {
 		for (int i = 0 ; i < 7 ; i ++) {
@@ -74,7 +76,8 @@ public class Sabot {
 	}
 	
 	/*
-	 * 
+	 * fonction de mélange d'un sabot
+	 * appelée en début de partie sur un sabot plein trié
 	 */
 	public void melanger () {
 		int[] nouvelID = new int[nombreCartes] ;
