@@ -25,6 +25,11 @@ public class TestMoteur {
 		assertEquals(carteNulle.getNomComplet(), "");
 		assertEquals(carteNulle.getId(), 0);
 		
+		Carte dixDeTrefle = new Carte ( "10" , "trefle" ) ;
+		dixDeTrefle.afficherNomComplet();
+		dixDeTrefle.afficher();
+		assertEquals(dixDeTrefle.getNomComplet(), "10 de Trefle");
+		
 		int[] idTests = { 1 , 13 , 14 , 26 , 27 , 39 , 40 , 52 , 53 }; // Affiche As-Roi-As-Roi-... à pique, coeur, carreau et trèfle
 		Carte carte = null;
 		for(int i : idTests){
