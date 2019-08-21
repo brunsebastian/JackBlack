@@ -4,6 +4,10 @@ import java.awt.Graphics;
 import java.awt.Image; 
 import javax.swing.JPanel; 
 
+/*
+ * Inutilisée pour l'instant : pour version affichage graphique fenêtré
+ */
+
 @SuppressWarnings("serial")
 public class AfficheImage extends JPanel{
 	Image img;

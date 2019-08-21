@@ -16,6 +16,10 @@ import javax.swing.KeyStroke;
  * JFrame avec menuBar + zone de tapis
  */
 
+/*
+ * Inutilisée pour l'instant : pour version affichage graphique fenêtré
+ */
+
 @SuppressWarnings("serial")
 public class TapisFrame extends JFrame{
 	private JMenuBar menuBar;
