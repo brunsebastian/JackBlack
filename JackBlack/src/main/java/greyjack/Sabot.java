@@ -66,8 +66,8 @@ public class Sabot {
 	public void afficherCartesEntre (int rangDebut , int rangFin) {
 		for (int i = 0 ; i < 7 ; i ++) {
 			for (int j = rangDebut ; j <= rangFin ; j ++)
-				//this.cartePaquet[i].afficherNomComplet () ;
-				if (cartesPaquet[j].getId () > 0)
+				if ( j < nombreCartes )
+					if (cartesPaquet[j].getId () > 0)
 						System.out.print (cartesPaquet[j].getLigneASCII (i) + "   ") ;
 			System.out.println () ;
 		}
