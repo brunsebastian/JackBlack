@@ -22,7 +22,7 @@ public class Main {
 		}
 	}
 	
-	public void jeter ( ) {
+	public void jeterMain ( ) {
 		for ( int i = 0 ; i < this.nombreMaxCartes ; i ++ )
 			this.cartesEnMain[i] = new Carte ( 0 ) ;
 	}

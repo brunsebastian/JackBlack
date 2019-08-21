@@ -52,7 +52,7 @@ public class TestMoteur {
 			ligneCartes.ajouter(new Carte(i));
 			if(i % 13 == 0){
 				ligneCartes.afficherCartes();
-				ligneCartes.vider();
+				ligneCartes.jeterMain();
 				
 				for(int j = 13; j > 0; j --){
 					if(i - j + 1 >= 10)
