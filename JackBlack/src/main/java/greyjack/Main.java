@@ -1,8 +1,8 @@
 package greyjack;
 
 public class Main {
-	private Carte[] cartesEnMain = null ;
-	private int nombreMaxCartes = 0 ;
+	protected Carte[] cartesEnMain = null ;
+	protected int nombreMaxCartes = 0 ;
 	
 	public Main ( int nombreMaxCartesInput )
 	{
@@ -22,7 +22,7 @@ public class Main {
 		}
 	}
 	
-	public void vider ( ) {
+	public void jeter ( ) {
 		for ( int i = 0 ; i < this.nombreMaxCartes ; i ++ )
 			this.cartesEnMain[i] = new Carte ( 0 ) ;
 	}

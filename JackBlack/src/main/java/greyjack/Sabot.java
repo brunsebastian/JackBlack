@@ -48,16 +48,6 @@ public class Sabot {
 		}
 	}
 	
-/*
-	for ( int i = 0 ; i < 7 ; i ++ )
-	{
-		for ( Carte carte : this.cartesEnMain )
-			if ( carte.getId ( ) > 0 )
-				System.out.print ( carte.getLigneASCII ( i ) + "   " ) ;
-		System.out.println ( ) ;
-	}
-}*/
-	
 	public void melanger ( ) {
 		int[] nouvelID = new int[nombreCartes] ;
 		int idTest = 0 ;
