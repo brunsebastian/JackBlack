@@ -41,8 +41,6 @@ public class Manche {
 		}
 	}
 	
-
-	
 // En cas de perte d'un joueur, prend son argent, l'ajoute au croupier
 	private int prendrePertes(Joueur joueurActif) {
 		return 0;
