@@ -7,12 +7,16 @@ public class Croupier extends Main {
 		super ( 10 ) ; // Le croupier n'a jamais besoin de plus de 10 cartes
 		this.cave = encaisseInput ;
 	}
-	
+
 	public boolean getServi ( ) {
-		return this.getTotalFinal ( ) >= 17 ;
+		return this.getTotalFinal ( ) >= 17 || this.servi == true || this.cartesEnMain[nombreMaxCartes-1].getId() != 0 ;
 	}
-	public void setServi ( boolean input ) {
-		this.servi = input ;
+	public void setServi ( boolean inputServi ) {
+		this.servi = inputServi ;
+	}
+	
+	public boolean blackjackPossible ( ) {
+		return this.cartesEnMain[1].getId() == 0 && ( this.cartesEnMain[0].getRang() == 1 || this.cartesEnMain[0].getRang() >= 10 ) ;
 	}
 	
 	public void decider ( Sabot sabot ) {

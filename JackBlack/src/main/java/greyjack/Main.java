@@ -48,12 +48,19 @@ public class Main {
 				soft = true ;
 		return soft ;
 	}
+
+	public boolean estBlackjack (  ) {
+		return this.getTotalFinal() == 21 && this.cartesEnMain[2].getId() == 0 ;
+	}
+	public boolean estSaute (  ) {
+		return this.getTotalFinal() > 21 ;
+	}
 	
 	public void afficherTotal ( ) {
 		int totalHard = this.getTotalHard ( ) ;
 		int total = this.getTotalFinal ( ) ;
-		if ( total == 21 && ( this.cartesEnMain[2].getId() == 0 ) )
-			System.out.println ( "Total : BLACKJACK !" ) ;
+		if ( this.estBlackjack() )
+			System.out.println ( "Total : 21 - BLACKJACK !" ) ;
 		else if ( total > 21 )
 			System.out.println ( "Total : " + total + " - SAUTE" ) ;
 		else if ( total != totalHard )

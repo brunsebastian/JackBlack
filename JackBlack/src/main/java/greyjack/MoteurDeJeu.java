@@ -29,6 +29,10 @@ public class MoteurDeJeu {
 			joueur.afficherTotal ( ) ;
 			joueur.decider ( sabot ) ;
 		}
+		if ( joueur.estSaute () && ( ! croupier.blackjackPossible() ) )
+			System.out.println ( "PERDU !" ) ;
+		else if ( joueur.estBlackjack () )
+			System.out.println ( "GAGNE !" ) ;
 		while ( ! croupier.getServi ( ) )
 		{
 			try {
@@ -36,7 +40,10 @@ public class MoteurDeJeu {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			croupier.decider ( sabot ) ;
+			if ( joueur.estSaute () )
+				croupier.setServi ( true ) ;
+			else
+				croupier.decider ( sabot ) ;
 			System.out.println ( ) ;
 			System.out.println ( ) ;
 			croupier.afficherCartes ( ) ;

@@ -13,7 +13,7 @@ public class Joueur extends Main {
 	}
 	
 	public boolean getServi ( ) {
-		return this.getTotalFinal ( ) >= 21 || this.servi == true ;
+		return this.getTotalFinal ( ) >= 21 || this.servi == true || cartesEnMain[nombreMaxCartes-1].getId() != 0 ;
 	}
 	public void setServi ( boolean input ) {
 		this.servi = input ;
@@ -25,7 +25,7 @@ public class Joueur extends Main {
 		if ( this.servi )
 			return false ;
 		do {
-			System.out.print ( "Taper 'r' pour rester, 't' pour tirer : " ) ;
+			System.out.print ( "Taper 'R' pour rester, 'T' pour tirer : " ) ;
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			try {
 				decision = br.readLine();
