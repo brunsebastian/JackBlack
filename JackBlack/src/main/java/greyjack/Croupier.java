@@ -8,6 +8,15 @@ public class Croupier extends Main {
 		this.cave = encaisseInput ;
 	}
 	
+	public boolean peutTirer ( ) {
+		return this.getTotalFinal ( ) < 17 ;
+	}
+	
+	public void decider ( Sabot sabot ) {
+		if ( this.peutTirer ( ) )
+			this.tirerCarte ( sabot ) ;
+	}
+	
 	/*public void executerTour ( Sabot sabot ) {
 		this.tirerCarte ( sabot ) ;
 		this.afficherCartes ( ) ;

@@ -51,7 +51,11 @@ public class Main {
 	public void afficherTotal ( ) {
 		int totalHard = this.getTotalHard ( ) ;
 		int total = this.getTotalFinal ( ) ;
-		if ( total != totalHard )
+		if ( total == 21 && ( this.cartesEnMain[2].getId() == 0 ) )
+			System.out.println ( "Total : BLACKJACK !" ) ;
+		else if ( total > 21 )
+			System.out.println ( "Total : " + total + " - SAUTE" ) ;
+		else if ( total != totalHard )
 			System.out.println ( "Total : " + totalHard + " ou " + total ) ;
 		else
 			System.out.println ( "Total : " + total ) ;

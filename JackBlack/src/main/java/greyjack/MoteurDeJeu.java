@@ -1,5 +1,9 @@
 package greyjack;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class MoteurDeJeu {
 	public static void main ( String[] args ) {
 		Sabot sabot = new Sabot ( 2 ) ;
@@ -29,25 +33,42 @@ public class MoteurDeJeu {
 		Carte troisDeCoeur = new Carte ( "3" , "coeur" ) ;
 		troisDeCoeur.afficher ( ) ;
 		*/
+		
 		Croupier croupier = new Croupier ( 300000 ) ;
-		Joueur Mylene = new Joueur ( 500 ) ;
+		Joueur joueur = new Joueur ( 500 ) ;
+		joueur.tirerCarte ( sabot ) ;
+		croupier.tirerCarte ( sabot ) ;
+		joueur.tirerCarte ( sabot ) ;
+		
 		//Alexia.executerTour ( sabot ) ;
 		//sabot.afficherToutesLesCartesNoms ( ) ;
-		
-		
-		while ( croupier.getTotalFinal ( ) < 17 )
+
+		while ( joueur.peutTirer ( ) )
 		{
-			croupier.tirerCarte ( sabot ) ;
+			System.out.println ( ) ;
+			System.out.println ( ) ;
 			croupier.afficherCartes ( ) ;
 			croupier.afficherTotal ( ) ;
+			System.out.println ( "-------------------------------------------------------" ) ;
+			joueur.afficherCartes ( ) ;
+			joueur.afficherTotal ( ) ;
+			joueur.decider ( sabot ) ;
+		}
+		while ( croupier.peutTirer ( ) )
+		{
 			try {
-				Thread.sleep ( 1000 ) ;
+				Thread.sleep ( 500 ) ;
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			if ( croupier.getTotalFinal ( ) > 21 )
-				System.out.println ( "SAUTE" ) ;
+			croupier.decider ( sabot ) ;
 			System.out.println ( ) ;
+			System.out.println ( ) ;
+			croupier.afficherCartes ( ) ;
+			croupier.afficherTotal ( ) ;
+			System.out.println ( "-------------------------------------------------------" ) ;
+			joueur.afficherCartes ( ) ;
+			joueur.afficherTotal ( ) ;
 		}
 	}
 }
