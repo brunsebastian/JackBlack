@@ -1,5 +1,6 @@
 package greyjack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /* La classe manche est l'organisateur de la partie.
@@ -25,7 +26,6 @@ public class Manche {
 	
 // Mettre à jour l'affichage de la table en fonction des valeurs actuelles du jeu
 	public void afficherManche() {
-		Navigation.afficherMenu();
 		System.out.println ( ) ;
 		System.out.println ( ) ;
 		croupier.afficherCartes ( ) ;
@@ -39,12 +39,8 @@ public class Manche {
 	
 // Fonction de debuggage : affichage des scores dans la console
 	public void afficherScore() {
-		
-	}
-	
-// Fonction de fin de partie : vérifie les scores de chacun et désigne le vainqueur
-	public void designerVainqueur() {
-		List <Joueur> joueursGagnants = null;
+		/*
+		List <Joueur> joueursGagnants = new ArrayList();
 		boolean croupierGagnant = false; // à corriger quand on intègre le croupier comme joueur ghostPlayer
 		for (Joueur joueurActuel:this.joueurs) {
 			if (joueurActuel.estBlackjack()) {
@@ -54,13 +50,15 @@ public class Manche {
 		if (croupier.estBlackjack()) {
 			croupierGagnant = true;
 		}
-		if (joueursGagnants == null && croupierGagnant == false) {
+		if (joueursGagnants.isEmpty() && croupierGagnant == false) {
 			for (Joueur joueurDeLaPartie : this.joueurs ) {
-				if (!joueurDeLaPartie.estSaute()) {
-					if (joueursGagnants == null || joueurDeLaPartie.getTotalFinal() == joueursGagnants.get(0).getTotalFinal()) {
-						joueursGagnants.add(joueurDeLaPartie);						
-					}
-					else if (joueurDeLaPartie.getTotalFinal() > joueursGagnants.get(0).getTotalFinal()) {
+				if (joueurDeLaPartie == null) System.out.println("Vide.");
+					if (!joueurDeLaPartie.estSaute()) {
+						if (joueursGagnants.isEmpty() || joueurDeLaPartie.getTotalFinal() == joueursGagnants.get(0).getTotalFinal() ) {
+							System.out.println("tu pues");
+							joueursGagnants.add(joueurDeLaPartie);
+						}
+						else if (joueurDeLaPartie.getTotalFinal() > joueursGagnants.get(0).getTotalFinal()) {
 						joueursGagnants.clear();
 						joueursGagnants.add(joueurDeLaPartie);
 					}
@@ -68,9 +66,40 @@ public class Manche {
 			}
 		}
 		
-		
-		System.out.println("Youpi Kai");
-		System.out.println("You loooooooose !");
+		if (joueursGagnants.isEmpty()) {
+			System.out.println("You loooooooose !"); //tous les joueurs ont sauté ou le donneur seul a un blackjack
+		}
+		else if (croupierGagnant = true) // croupier a blackjack et il y a au moins un joueur avec blackjack
+			
+		{
+			
+		}*/
+	}
+	
+// Fonction de fin de partie : vérifie les scores de chacun et désigne le vainqueur
+	public void designerVainqueur() {			
+		for (Joueur joueurDeLaPartie : this.joueurs ) {
+			if ( joueurDeLaPartie.estSaute() )
+				System.out.println ( "You loooooooose !" ) ;
+			else if ( croupier.estBlackjack() ) {
+				if ( joueurDeLaPartie.estBlackjack() )
+					System.out.println ( "Egalite." ) ;
+				else
+					System.out.println ( "You loooooooose !" ) ;
+			}
+			else if (joueurDeLaPartie.estBlackjack()) {
+				System.out.println("Blackjack !!! La fete a ton cul");
+			}
+			else if ( croupier.estSaute() )	
+				System.out.println( "Youpi Kai." );
+			else if ( joueurDeLaPartie.getTotalFinal() > croupier.getTotalFinal() )
+					System.out.println( "Youpi Kai." );
+			else if ( joueurDeLaPartie.getTotalFinal() < croupier.getTotalFinal() )
+				System.out.println( "You loooooooose !" );
+			else
+				System.out.println( "Egalite." );			
+			System.out.println ( "-------------------------------" ) ;
+		}
 	}
 	
 // Verification que la manche a été initialisée
@@ -81,6 +110,7 @@ public class Manche {
 // Fonction appelée par le jeu pour créer une nouvelle manche
 // Constructeur. A corriger pour les cas multijoueurs
 	public Manche() {
+		
 		//Initialisation de la manche
 		this.joueurs = new Joueur[tempNombreJoueurs];
 		this.croupier = new Croupier(300000);
@@ -92,7 +122,9 @@ public class Manche {
 		for (Joueur joueurActif: this.joueurs) joueurActif.tirerCarte(sabot);
 		croupier.tirerCarte(sabot);
 		for (Joueur joueurActif: this.joueurs) joueurActif.tirerCarte(sabot);
+		System.out.println("Autant pour moi encore.");
 		afficherManche();
+		System.out.println("Autant pour moi ou pas.");		
 		
 		// Cas general de la manche
 		for (Joueur joueurActif: this.joueurs) {			
