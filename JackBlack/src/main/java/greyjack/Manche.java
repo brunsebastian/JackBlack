@@ -17,11 +17,11 @@ public class Manche {
 	
 // Fonction qui retourne la position d'un objet dans une liste d'objets non primitifs
 	public static <T> int indexOf(T[] array, T target) {
-	for (int i=0; i<= array.length; i++) {
-		if (target.equals(array[i])) return i;
+		for (int i=0; i< array.length; i++) {
+			if (target.equals(array[i])) return i;
+		}
+		return -1;
 	}
-	return -1;
-}
 	
 // Mettre à jour l'affichage de la table en fonction des valeurs actuelles du jeu
 	public void afficherManche() {
@@ -45,7 +45,7 @@ public class Manche {
 // Fonction de fin de partie : vérifie les scores de chacun et désigne le vainqueur
 	public void designerVainqueur() {
 		List <Joueur> joueursGagnants = null;
-		boolean croupierGagnant==false; // à corriger quand on intègre le croupier comme joueur ghostPlayer
+		boolean croupierGagnant = false; // à corriger quand on intègre le croupier comme joueur ghostPlayer
 		for (Joueur joueurActuel:this.joueurs) {
 			if (joueurActuel.estBlackjack()) {
 				joueursGagnants.add(joueurActuel);
@@ -54,12 +54,23 @@ public class Manche {
 		if (croupier.estBlackjack()) {
 			croupierGagnant = true;
 		}
-	}
+		if (joueursGagnants == null && croupierGagnant == false) {
+			for (Joueur joueurDeLaPartie : this.joueurs ) {
+				if (!joueurDeLaPartie.estSaute()) {
+					if (joueursGagnants == null || joueurDeLaPartie.getTotalFinal() == joueursGagnants.get(0).getTotalFinal()) {
+						joueursGagnants.add(joueurDeLaPartie);						
+					}
+					else if (joueurDeLaPartie.getTotalFinal() > joueursGagnants.get(0).getTotalFinal()) {
+						joueursGagnants.clear();
+						joueursGagnants.add(joueurDeLaPartie);
+					}
+				}
+			}
+		}
 		
-		afficherScore();
 		
-		Youpi Kai » apparait lorsque le joueur gagne.
-		Le message « You loooooooose !» apparait lorsque
+		System.out.println("Youpi Kai");
+		System.out.println("You loooooooose !");
 	}
 	
 // Verification que la manche a été initialisée
@@ -73,7 +84,7 @@ public class Manche {
 		//Initialisation de la manche
 		this.joueurs = new Joueur[tempNombreJoueurs];
 		this.croupier = new Croupier(300000);
-		for (int i=0; i< tempNombreJoueurs; i++) this.joueurs[i] = new Joueur (500); // corriger avec fonction static length(array of object)
+		for (int i=0; i< tempNombreJoueurs; i++) this.joueurs[i] = new Joueur (500);
 		sabot = new Sabot(tempNombreDePaquets);
 		sabot.melanger();
 		
