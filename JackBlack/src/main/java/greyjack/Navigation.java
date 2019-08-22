@@ -25,21 +25,27 @@ public class Navigation {
 					"             |_|                         \r\n" + 
 					"\r\n" + 
 					"");
-			System.out.println("Nouvelle Partie (N)");
-			System.out.println("Charger la dernière partie (C)");
-			System.out.println("Meilleurs Scores (S)");
-			System.out.println("Quitter (Q)");
-			char prompt = sc.nextLine().charAt(0);
-			if(prompt == 'N') {
-				System.out.println("Blackjack Power baby !");
-				Navigation.jeu();
-			} else if(prompt == 'Q') {
-				System.out.println("La prochaine fois peut être ...");
-				start = false;
-			}
+			afficherMenu();
 		}
 	}
 
+	/*
+	 * Affichage du menu de jeu
+	 */
+	public static void afficherMenu() {
+		System.out.println("Nouvelle Partie (N)");
+		System.out.println("Charger la dernière partie (C)");
+		System.out.println("Meilleurs Scores (S)");
+		System.out.println("Quitter (Q)");
+		char prompt = sc.nextLine().charAt(0);
+		if(prompt == 'N') {
+			System.out.println("Blackjack Power baby !");
+			Navigation.jeu();
+		} else if(prompt == 'Q') {
+			System.out.println("La prochaine fois peut être ...");
+			start = false;
+		}
+	}
 	
 	public static void jeu() {
 		Sabot paquetDeCartes = new Sabot ( 2 ) ;
