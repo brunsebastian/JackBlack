@@ -5,7 +5,7 @@ public class Main {
 	protected int nombreMaxCartes = 0 ;
 	protected boolean servi = false ;
 	
-	public Main ( int nombreMaxCartesInput ) // "nombreMaxCartes" est utilise en guise de garde-fou
+	public Main ( int nombreMaxCartesInput ) // "nombreMaxCartes" est utilisé en guise de garde-fou
 	{
 		cartesEnMain = new Carte[nombreMaxCartesInput] ;
 		this.nombreMaxCartes = nombreMaxCartesInput ;
