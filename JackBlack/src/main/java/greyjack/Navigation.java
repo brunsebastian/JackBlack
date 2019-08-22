@@ -86,6 +86,21 @@ public class Navigation {
 		System.out.println(messageDefaite);
 	}
 	
+	public static void afficherMessageEgalite() {
+		String messageEgalite = "\r\n" + 
+				"\r\n" + 
+				"     _                                _\r\n" + 
+				"    /_/             .__  .__  __     /_/      \r\n" + 
+				"  ____   _________  |  | |__|/  |_  ____  \r\n" + 
+				"_/ __ \\ / ___\\__  \\ |  | |  \\   __\\/ __ \\ \r\n" + 
+				"\\  ___// /_/  > __ \\|  |_|  ||  | \\  ___/ \r\n" + 
+				" \\___  >___  (____  /____/__||__|  \\___  >\r\n" + 
+				"     \\/_____/     \\/                   \\/ \r\n" + 
+				"\r\n" + 
+				""; 
+		System.out.println(messageEgalite);
+	}
+	
 	public static void afficherBlackjack() {
 		String messageBlackjack = "\r\n" + 
 				"\r\n" + 
