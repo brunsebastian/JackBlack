@@ -4,10 +4,6 @@ public class Carte {
 	private int id = 0 ;
 	private int rang = 0 ;
 	private int enseigne = 0 ;
-	private String nomRang = "" ;
-	private String nomEnseigne = "" ;
-	
-
 	
 	private String[] nomRangDico = { "As" , "2" , "3" , "4" , "5" , "6", "7" , "8" , "9" , "10" , "Valet" , "Dame" , "Roi" } ;
 	private String[] nomEnseigneDico = { "Pique" , "Coeur" , "Carreau" , "Trefle" } ;
@@ -54,11 +50,8 @@ public class Carte {
 			this.id = idInput ;
 			this.rang = 1 + ( idInput - 1 ) % 13 ;
 			this.enseigne = 1 + ( idInput - 1 ) / 13 % 4 ;
-			this.nomRang = nomRangDico[this.rang-1] ;
-			this.nomEnseigne = nomEnseigneDico[this.enseigne-1] ;
 		}
 	}
-	
 	
 	public int getId ( ) {
 		return this.id ;
@@ -84,8 +77,6 @@ public class Carte {
 		this.id = 0 ;
 		this.rang = 0 ;
 		this.enseigne = 0 ;
-		this.nomRang = "" ;
-		this.nomEnseigne = "" ;
 	}
 
 	public void afficherNomComplet ( ) {
@@ -93,7 +84,7 @@ public class Carte {
 	}
 	public String getNomComplet ( ) {
 		if ( this.id > 0 )
-			return ( this.nomRang + " de " + this.nomEnseigne ) ;
+			return ( this.nomRangDico[this.rang-1] + " de " + this.nomEnseigneDico[this.enseigne-1] ) ;
 		else
 			return "" ;
 	}
