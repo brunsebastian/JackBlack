@@ -53,7 +53,6 @@ public class Carte {
 		}
 	}
 	
-	
 	public int getId ( ) {
 		return this.id ;
 	}
