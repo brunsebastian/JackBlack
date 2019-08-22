@@ -46,7 +46,7 @@ public class Navigation {
 			start = false;
 		}
 	}
-	
+	// un commentaire
 	public static void afficherMessageVictoire() {
 		String messageVictoire = " /$$     /$$                           /$$       /$$   /$$           /$$\r\n" + 
 				"|  $$   /$$/                          |__/      | $$  /$$/          |__/\r\n" + 
