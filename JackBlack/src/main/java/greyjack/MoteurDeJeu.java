@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 public class MoteurDeJeu {
 	public static void main ( String[] args ) {
+//<<<<<<< HEAD
 		Sabot sabot = new Sabot ( 2 ) ;
 		sabot.melanger ( ) ;
 		
@@ -52,14 +53,8 @@ public class MoteurDeJeu {
 			joueur.afficherCartes ( ) ;
 			joueur.afficherTotal ( ) ;
 		}
+//=======
+		Manche manche = new Manche();
+//>>>>>>> branch 'master' of https://github.com/brunsebastian/JackBlack.git
 	}
 }
-
-/*
-Classes a faire :
-- jeu de cartes
-- carte
-- Croupier
-- joueur
-
-*/
