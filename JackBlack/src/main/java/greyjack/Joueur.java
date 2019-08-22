@@ -6,15 +6,17 @@ import java.io.InputStreamReader;
 
 public class Joueur extends Main {
 	int cave = 0 ;
-	boolean servi = false ;
 
-	public Joueur ( int caveinitiale ) {
-		super ( 10 ) ; // Le joueur n'a jamais besoin de plus de 15 cartes
-		this.cave = caveinitiale ;
+	public Joueur ( int caveInitiale ) {
+		super ( 10 ) ; // Le joueur n'a jamais besoin de plus de 10 cartes
+		this.cave = caveInitiale ;
 	}
 	
-	public boolean peutTirer ( ) {
-		return this.getTotalFinal ( ) < 21 && this.servi == false ;
+	public boolean getServi ( ) {
+		return this.getTotalFinal ( ) >= 21 || this.servi == true ;
+	}
+	public void setServi ( boolean input ) {
+		this.servi = input ;
 	}
 	
 	public boolean decider ( Sabot sabot ) {

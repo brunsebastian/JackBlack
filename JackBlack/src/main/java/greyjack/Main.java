@@ -3,6 +3,7 @@ package greyjack;
 public class Main {
 	protected Carte[] cartesEnMain = null ;
 	protected int nombreMaxCartes = 0 ;
+	protected boolean servi = false ;
 	
 	public Main ( int nombreMaxCartesInput )
 	{
