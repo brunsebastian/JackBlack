@@ -115,6 +115,57 @@ public class Navigation {
 		System.out.println(messageBlackjack);
 	}
 	
+	public static void afficherDoigt()throws InterruptedException {
+//		String messageDoigt ="\r\n" + 
+//				"\r\n" + 
+//				"          __\r\n" + 
+//				"         /' ||\r\n" + 
+//				"         |_ '|\r\n" + 
+//				"         |   |\r\n" + 
+//				"         |   |\r\n" + 
+//				"         |   |\r\n" + 
+//				"      ___|   |__    \r\n" + 
+//				"   _ /  /    /  /\r\n" + 
+//				"  / |   '   '   |   \r\n" + 
+//				" |              |\\\r\n" + 
+//				" |              | |\r\n" + 
+//				" |                |\r\n" + 
+//				"  \\              / \r\n" + 
+//				"    \\         '\r\n" + 
+//				"    /        /\r\n" + 
+//				"\r\n" + 
+//				"";
+//		System.out.println(messageDoigt);
+		
+		System.out.print("\r\n" + 
+				"\r\n" + 
+				"          __\r\n");
+		Thread.sleep(200);
+		System.out.print("         /' ||\r\n" + 
+				"         |_ '|\r\n");
+		Thread.sleep(200);
+		System.out.print("         |   |\r\n" + 
+				"         |   |\r\n");
+		Thread.sleep(200);
+		System.out.print("         |   |\r\n" + 
+				"      ___|   |__    \r\n");
+		Thread.sleep(200);
+		System.out.print("   _ /  /    /  /\r\n" + 
+				"  / |   '   '   |   \r\n");
+		Thread.sleep(200);
+		System.out.print(" |              |\\\r\n" + 
+				" |              | |\r\n");
+		Thread.sleep(200);
+		System.out.print(" |                |\r\n" + 
+				"  \\              / \r\n");
+		Thread.sleep(200);
+		System.out.print("    \\         '\r\n" + 
+				"    /        /\r\n");
+		Thread.sleep(200);
+		System.out.println("\r\n" + 
+				"");
+	}
+
 	public static void jeu() {
 		Sabot paquetDeCartes = new Sabot ( 2 ) ;
 		paquetDeCartes.melanger ( ) ;
