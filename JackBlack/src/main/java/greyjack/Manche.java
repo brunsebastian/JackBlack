@@ -80,25 +80,32 @@ public class Manche {
 	public void designerVainqueur() {			
 		for (Joueur joueurDeLaPartie : this.joueurs ) {
 			if ( joueurDeLaPartie.estSaute() )
-				System.out.println ( "You loooooooose !" ) ;
+				Navigation.afficherMessageDefaite();
 			else if ( croupier.estBlackjack() ) {
 				if ( joueurDeLaPartie.estBlackjack() )
-					System.out.println ( "Egalite." ) ;
+					Navigation.afficherMessageEgalite();
 				else
-					System.out.println ( "You loooooooose !" ) ;
+					Navigation.afficherMessageDefaite();
 			}
 			else if (joueurDeLaPartie.estBlackjack()) {
 				System.out.println("Blackjack !!! La fete a ton cul");
+				Navigation.afficherBlackjack();
+				try {
+					Navigation.afficherDoigt();
+				}
+				catch (InterruptedException iE)
+				{
+					iE.printStackTrace();
+				}
 			}
 			else if ( croupier.estSaute() )	
-				System.out.println( "Youpi Kai." );
+				Navigation.afficherMessageVictoire();
 			else if ( joueurDeLaPartie.getTotalFinal() > croupier.getTotalFinal() )
-					System.out.println( "Youpi Kai." );
+				Navigation.afficherMessageVictoire();
 			else if ( joueurDeLaPartie.getTotalFinal() < croupier.getTotalFinal() )
-				System.out.println( "You loooooooose !" );
+				Navigation.afficherMessageDefaite();
 			else
-				System.out.println( "Egalite." );			
-			System.out.println ( "-------------------------------" ) ;
+				Navigation.afficherMessageEgalite();		
 		}
 	}
 	

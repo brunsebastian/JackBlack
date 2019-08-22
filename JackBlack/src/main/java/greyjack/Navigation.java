@@ -167,22 +167,6 @@ public class Navigation {
 	}
 
 	public static void jeu() {
-		Sabot paquetDeCartes = new Sabot ( 2 ) ;
-		paquetDeCartes.melanger ( ) ;
-		//paquetDeCartes.afficherToutesLesCartes ( ) ;
-		Carte cinqDeCarreau = new Carte ( 31 ) ;
-		Carte dameDeCoeur = new Carte ( 25 ) ;
-		Carte asDeTrefle = new Carte ( 40 ) ;
-		Main mainTest = new Main ( 10 ) ;
-		mainTest.ajouter ( asDeTrefle ) ;
-		mainTest.ajouter ( dameDeCoeur ) ;
-		mainTest.ajouter ( cinqDeCarreau ) ;
-		mainTest.ajouter ( new Carte ( 2 ) ) ;
-		//mainTest.afficherCartes ( ) ;
-		//mainTest.tirerCarte ( paquetDeCartes ) ;
-		mainTest.afficherCartes ( ) ;
-		mainTest.afficherTotal ( ) ;
-		cinqDeCarreau.afficher ( ) ;
-		cinqDeCarreau.afficherNomComplet ( ) ;
+		Manche manche = new Manche();
 	}
 }
