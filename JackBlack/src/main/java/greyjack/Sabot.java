@@ -27,6 +27,10 @@ public class Sabot {
 	}
 	
 	public int getNombreCartes ( ) {
+		return this.nombreCartes ;
+	}
+	
+	public int getNombreCartesRestantes ( ) {
 		return this.indexCarteDessus + 1 ;
 	}
 	
