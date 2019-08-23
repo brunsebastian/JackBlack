@@ -42,7 +42,10 @@ public class Joueur extends Main {
 		if ( this.servi )
 			return false ;
 		do {
-			System.out.print ( "Taper 'R' pour rester, 'T' pour tirer : " ) ;
+			if ( this.cave >= this.mise * 2 )
+				System.out.print ( "Taper 'R' pour rester, 'T' pour tirer, 'D' pour doubler : " ) ;
+			else
+				System.out.print ( "Taper 'R' pour rester, 'T' pour tirer : " ) ;
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			try {
 				decision = br.readLine();
@@ -50,9 +53,15 @@ public class Joueur extends Main {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			if (decision.equalsIgnoreCase("t"))
 				this.tirerCarte(sabot);
+			else if (decision.equalsIgnoreCase("d") && this.cave >= this.mise * 2) {
+				veutContinuer = false ;
+				this.servi = true ;
+				this.mise *= 2 ;
+				this.tirerCarte(sabot);
+			}
 			else if (decision.equalsIgnoreCase("r")) {
 				veutContinuer = false ;
 				this.servi = true ;

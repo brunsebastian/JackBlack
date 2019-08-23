@@ -72,12 +72,6 @@ public class Carte {
 		else
 			return 0 ;
 	}
-	
-	public void detruire ( ) {
-		this.id = 0 ;
-		this.rang = 0 ;
-		this.enseigne = 0 ;
-	}
 
 	public void afficherNomComplet ( ) {
 		System.out.println ( getNomComplet ( ) ) ;

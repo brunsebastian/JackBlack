@@ -164,7 +164,7 @@ public class Manche {
 				for (Joueur joueurActif: this.joueurs) joueurActif.tirerCarte(sabot);
 				
 				System.out.print("Sabot : " +sabot.getNombreCartes() + " ");
-				for (int i = sabot.getNombreCartes(); i>0 ; i -=4) System.out.print("|");
+				for (int i = 0 ; i<sabot.getNombreCartesRestantes() ; i +=4) System.out.print("|");
 				for (int i = sabot.getNombreCartes(); i<312 ; i +=4) System.out.print(".");
 				afficherManche();
 				
