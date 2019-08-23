@@ -37,6 +37,7 @@ public class Sabot {
 
 	/*
 	 * Affichage vertical de chaque carte d'un paquet
+	 * fonction de test unitaire
 	 */
 	public void afficherToutesLesCartesVerticalement () {
 		for (Carte carte : this.cartesPaquet) {
@@ -48,6 +49,7 @@ public class Sabot {
 	
 	/*
 	 * Affichage du nom de chaque carte d'un paquet
+	 * fonction de test unitaire
 	 */
 	public void afficherToutesLesCartesNoms () {
 		int i = 0 ;
@@ -98,7 +100,9 @@ public class Sabot {
 	}
 	
 	/*
-	 * 
+	 * Appelée par Manche pour distribuer une carte à une Main (Croupier ou Joueur)
+	 * Modifie l'index dans le sabot symbolisant la prochaine carte à tirer (indexCarteDessus).
+	 * @return Carte : la Carte à distribuer 
 	 */
 	public Carte fournirCarte () {
 		if (this.indexCarteDessus > 0) {
