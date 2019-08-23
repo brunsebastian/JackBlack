@@ -37,16 +37,16 @@ public class Navigation {
 		System.out.println("Charger la dernière partie (C)");
 		System.out.println("Meilleurs Scores (S)");
 		System.out.println("Quitter (Q)");
-		char prompt = sc.nextLine().charAt(0);
-		if(prompt == 'N') {
+		char prompt = Character.toLowerCase(sc.nextLine().charAt(0));
+		if(prompt == 'n') {
 			System.out.println("Blackjack Power baby !");
 			Navigation.jeu();
-		} else if(prompt == 'Q') {
+		} else if(prompt == 'q') {
 			System.out.println("La prochaine fois peut être ...");
 			start = false;
 		}
 	}
-	// un commentaire 2
+	// Affichage des messages
 	public static void afficherMessageVictoire() {
 		String messageVictoire = " /$$     /$$                           /$$       /$$   /$$           /$$\r\n" + 
 				"|  $$   /$$/                          |__/      | $$  /$$/          |__/\r\n" + 
@@ -65,22 +65,22 @@ public class Navigation {
 	}
 	
 	public static void afficherMessageDefaite() {
-		String messageDefaite = "                                                                                                                              ,---,  \r\n" + 
-				"                                                                                                                           ,`--.' |  \r\n" + 
-				"                                               ,--,                                                                        |   :  :  \r\n" + 
-				"        ,---,                                ,--.'|                                                                        '   '  ;  \r\n" + 
-				"       /_ ./|   ,---.           ,--,         |  | :     ,---.     ,---.     ,---.     ,---.                                |   |  |  \r\n" + 
-				" ,---, |  ' :  '   ,'\\        ,'_ /|         :  : '    '   ,'\\   '   ,'\\   '   ,'\\   '   ,'\\   .--.--.                     '   :  ;  \r\n" + 
-				"/___/ \\.  : | /   /   |  .--. |  | :         |  ' |   /   /   | /   /   | /   /   | /   /   | /  /    '     ,---.          |   |  '  \r\n" + 
-				" .  \\  \\ ,' '.   ; ,. :,'_ /| :  . |         '  | |  .   ; ,. :.   ; ,. :.   ; ,. :.   ; ,. :|  :  /`./    /     \\         '   :  |  \r\n" + 
-				"  \\  ;  `  ,''   | |: :|  ' | |  . .         |  | :  '   | |: :'   | |: :'   | |: :'   | |: :|  :  ;_     /    /  |        ;   |  ;  \r\n" + 
-				"   \\  \\    ' '   | .; :|  | ' |  | |         '  : |__'   | .; :'   | .; :'   | .; :'   | .; : \\  \\    `. .    ' / |        `---'. |  \r\n" + 
-				"    '  \\   | |   :    |:  | : ;  ; |         |  | '.'|   :    ||   :    ||   :    ||   :    |  `----.   \\'   ;   /|         `--..`;  \r\n" + 
-				"     \\  ;  ;  \\   \\  / '  :  `--'   \\        ;  :    ;\\   \\  /  \\   \\  /  \\   \\  /  \\   \\  /  /  /`--'  /'   |  / |        .--,_     \r\n" + 
-				"      :  \\  \\  `----'  :  ,      .-./        |  ,   /  `----'    `----'    `----'    `----'  '--'.     / |   :    |        |    |`.  \r\n" + 
-				"       \\  ' ;           `--`----'             ---`-'                                           `--'---'   \\   \\  /         `-- -`, ; \r\n" + 
-				"        `--`                                                                                               `----'            '---`\"  \r\n" + 
-				"                                                                                                                                     \r\n" + 
+		String messageDefaite = "                                                                                             ,---,  \r\n" + 
+				"                                                                                          ,`--.' |  \r\n" + 
+				"                                            ,--,                                          |   :  :  \r\n" + 
+				"                                          ,--.'|                                          '   '  ;  \r\n" + 
+				"             ,---.           ,--,         |  | :     ,---.                                |   |  |  \r\n" + 
+				"            '   ,'\\        ,'_ /|         :  : '    '   ,'\\   .--.--.                     '   :  ;  \r\n" + 
+				"      .--, /   /   |  .--. |  | :         |  ' |   /   /   | /  /    '     ,---.          |   |  '  \r\n" + 
+				"    /_ ./|.   ; ,. :,'_ /| :  . |         '  | |  .   ; ,. :|  :  /`./    /     \\         '   :  |  \r\n" + 
+				" , ' , ' :'   | |: :|  ' | |  . .         |  | :  '   | |: :|  :  ;_     /    /  |        ;   |  ;  \r\n" + 
+				"/___/ \\: |'   | .; :|  | ' |  | |         '  : |__'   | .; : \\  \\    `. .    ' / |        `---'. |  \r\n" + 
+				" .  \\  ' ||   :    |:  | : ;  ; |         |  | '.'|   :    |  `----.   \\'   ;   /|         `--..`;  \r\n" + 
+				"  \\  ;   : \\   \\  / '  :  `--'   \\        ;  :    ;\\   \\  /  /  /`--'  /'   |  / |        .--,_     \r\n" + 
+				"   \\  \\  ;  `----'  :  ,      .-./        |  ,   /  `----'  '--'.     / |   :    |        |    |`.  \r\n" + 
+				"    :  \\  \\          `--`----'             ---`-'             `--'---'   \\   \\  /         `-- -`, ; \r\n" + 
+				"     \\  ' ;                                                               `----'            '---`\"  \r\n" + 
+				"      `--`                                                                                          \r\n" + 
 				"\r\n" + 
 				""; 
 		System.out.println(messageDefaite);
@@ -101,7 +101,7 @@ public class Navigation {
 		System.out.println(messageEgalite);
 	}
 	
-	public static void afficherBlackjack() {
+	public static void afficherMessageBlackjack() {
 		String messageBlackjack = "\r\n" + 
 				"\r\n" + 
 				"__________.__                 __         __               __     ___.         ___.          ._.\r\n" + 
