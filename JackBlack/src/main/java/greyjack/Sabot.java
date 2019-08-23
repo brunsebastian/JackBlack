@@ -19,11 +19,15 @@ public class Sabot {
 	public Sabot (int nombrePaquetsInput) { // Le jeu de cartes est cree trie
 		this.nombrePaquets = nombrePaquetsInput ;
 		this.nombreCartes = 52 * nombrePaquetsInput ;
-		indexCarteDessus = this.nombreCartes - 1 ;
-		cartesPaquet = new Carte[this.nombreCartes] ;
+		this.indexCarteDessus = this.nombreCartes - 1 ;
+		this.cartesPaquet = new Carte[this.nombreCartes] ;
 		for (int i = 0 ; i < 52 * nombrePaquetsInput ; i ++) {
 			cartesPaquet[i] = new Carte (1 + i) ;
 		}
+	}
+	
+	public int getNombreCartes ( ) {
+		return this.indexCarteDessus + 1 ;
 	}
 	
 	/*
@@ -97,6 +101,12 @@ public class Sabot {
 				i ++ ;
 			}
 		}
+		this.indexCarteDessus = this.nombreCartes - 1 ;
+	}
+	
+	public void finDeManche () {
+		if ( this.indexCarteDessus <= 52 )
+			melanger () ;
 	}
 	
 	/*

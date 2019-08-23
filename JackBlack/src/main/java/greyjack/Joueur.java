@@ -6,10 +6,27 @@ import java.io.InputStreamReader;
 
 public class Joueur extends Main {
 	int cave = 0 ;
+	int mise = 0 ;
 
 	public Joueur ( int caveInitiale ) {
 		super ( 10 ) ; // Le joueur n'a jamais besoin de plus de 10 cartes
 		this.cave = caveInitiale ;
+	}
+
+	public int getCave ( ) {
+		return this.cave ;
+	}	
+	public int getMise ( ) {
+		return this.mise ;
+	}	
+	public void setMise ( int inputMise ) {
+		if ( inputMise >= 0)
+			this.mise = Math.min ( inputMise , this.cave ) ; // On ne peut pas miser plus que le montant de la cave
+	}
+	
+	public void gagnerPerdre ( double multiplicateurMise ) {
+		this.cave += (int) Math.round ( this.mise * Math.max ( multiplicateurMise , -1 ) ) ; // On ne peut pas deduire plus d'une fois la mise
+		this.mise = 0 ;
 	}
 	
 	public boolean getServi ( ) {

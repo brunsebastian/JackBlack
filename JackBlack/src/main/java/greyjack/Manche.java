@@ -1,7 +1,6 @@
 package greyjack;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 /* La classe manche est l'organisateur de la partie.
  *  Elle communique avec le croupier et le joueur.
@@ -77,17 +76,42 @@ public class Manche {
 	}
 	
 // Fonction de fin de partie : vérifie les scores de chacun et désigne le vainqueur
-	public void designerVainqueur() {			
+	
+	private Scanner sc;
+	public void designerVainqueur() {
+		double multiplicateur = 0 ;
 		for (Joueur joueurDeLaPartie : this.joueurs ) {
 			if ( joueurDeLaPartie.estSaute() )
-				Navigation.afficherMessageDefaite();
+				multiplicateur = -1 ;
 			else if ( croupier.estBlackjack() ) {
 				if ( joueurDeLaPartie.estBlackjack() )
-					Navigation.afficherMessageEgalite();
+					multiplicateur = 0 ;
 				else
-					Navigation.afficherMessageDefaite();
+					multiplicateur = -1 ;
 			}
 			else if (joueurDeLaPartie.estBlackjack()) {
+				multiplicateur = 1.5 ;
+			}
+			else if ( croupier.estSaute() )	
+				multiplicateur = 1 ;
+			else if ( joueurDeLaPartie.getTotalFinal() > croupier.getTotalFinal() )
+				multiplicateur = 1 ;
+			else if ( joueurDeLaPartie.getTotalFinal() < croupier.getTotalFinal() )
+				multiplicateur = -1 ;
+			else
+				multiplicateur = 0 ;
+
+			
+			if ( multiplicateur == -1 ) {
+				Navigation.afficherMessageDefaite();
+			}
+			else if ( multiplicateur == 0 ) {
+				Navigation.afficherMessageEgalite();
+			}
+			else if ( multiplicateur == 1 ) {
+				Navigation.afficherMessageVictoire();
+			}
+			else if ( multiplicateur == 1.5 ) {
 				System.out.println("Blackjack !!! La fete a ton cul");
 				Navigation.afficherBlackjack();
 				try {
@@ -98,14 +122,9 @@ public class Manche {
 					iE.printStackTrace();
 				}
 			}
-			else if ( croupier.estSaute() )	
-				Navigation.afficherMessageVictoire();
-			else if ( joueurDeLaPartie.getTotalFinal() > croupier.getTotalFinal() )
-				Navigation.afficherMessageVictoire();
-			else if ( joueurDeLaPartie.getTotalFinal() < croupier.getTotalFinal() )
-				Navigation.afficherMessageDefaite();
 			else
-				Navigation.afficherMessageEgalite();		
+				System.out.println ( "ERREUR" ) ; 
+			joueurDeLaPartie.gagnerPerdre ( multiplicateur );
 		}
 	}
 	
@@ -125,33 +144,59 @@ public class Manche {
 		sabot = new Sabot(tempNombreDePaquets);
 		sabot.melanger();
 		
-		//Premiere donne
-		for (Joueur joueurActif: this.joueurs) joueurActif.tirerCarte(sabot);
-		croupier.tirerCarte(sabot);
-		for (Joueur joueurActif: this.joueurs) joueurActif.tirerCarte(sabot);
-		System.out.println("Autant pour moi encore.");
-		afficherManche();
-		System.out.println("Autant pour moi ou pas.");		
-		
-		// Cas general de la manche
-		for (Joueur joueurActif: this.joueurs) {			
-			while (!joueurActif.getServi()) {
-				joueurActif.decider(this.sabot);
+		boolean flagJouer = true ;
+		while ( flagJouer ) {
+			System.out.println ( "Vous possedez " + joueurs[0].getCave() + " M$." ) ;
+			System.out.println ( "Veuillez renseigner votre mise (0 pour quitter la table) : " ) ;
+			sc = new Scanner(System.in);
+			int miseInput = sc.nextInt();
+			if ( miseInput <= 0)
+				flagJouer = false ;
+			else {
+				joueurs[0].setMise(miseInput);
+			
+				//Premiere donne
+				for (Joueur joueurActif: this.joueurs) {
+					joueurActif.tirerCarte(sabot);
+					joueurActif.setServi(false);
+				}
+				croupier.tirerCarte(sabot);
+				for (Joueur joueurActif: this.joueurs) joueurActif.tirerCarte(sabot);
+				
+				System.out.print("Sabot : " +sabot.getNombreCartes() + " ");
+				for (int i = sabot.getNombreCartes(); i>0 ; i -=4) System.out.print("|");
+				for (int i = sabot.getNombreCartes(); i<312 ; i +=4) System.out.print(".");
 				afficherManche();
+				
+				// Cas general de la manche
+				for (Joueur joueurActif: this.joueurs) {			
+					while (!joueurActif.getServi()) {
+						joueurActif.decider(this.sabot);
+						afficherManche();
+					}
+					System.out.println("Joueur "+ Integer.toString(indexOf(this.joueurs, joueurActif)) +" servi.");			
+				}
+				while (!croupier.getServi()) {
+					croupier.decider(this.sabot);
+					afficherManche();		
+				// temps d'attente pour la lisibilité de la donne
+					try {
+						Thread.sleep ( 250 ) ;
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				try { Thread.sleep ( 1000 ) ; } catch (InterruptedException e) { e.printStackTrace(); }
+				designerVainqueur();
+				joueurs[0].jeterMain();
+				croupier.jeterMain();
+				sabot.finDeManche () ;
+				try { Thread.sleep ( 1000 ) ; } catch (InterruptedException e) { e.printStackTrace(); }
 			}
-			System.out.println("Joueur "+ Integer.toString(indexOf(this.joueurs, joueurActif)) +" servi.");			
 		}
-		while (!croupier.getServi()) {
-			croupier.decider(this.sabot);
-			afficherManche();		
-		// temps d'attente pour la lisibilité de la donne
-			try {
-				Thread.sleep ( 50 ) ;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		designerVainqueur();
+		
+		
 	}
 // En cas de perte d'un joueur, prend son argent, l'ajoute au croupier
 	private int prendrePertes(Joueur joueurActif) {
