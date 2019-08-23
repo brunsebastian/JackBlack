@@ -88,6 +88,36 @@ public class TestMoteur {
 		{
 			sabot.afficherCartesEntre(i , Math.min(i + 5 , 51));
 			System.out.println();
-		}	
+		}
+		
+		int miseTest = 0 ;
+		Joueur joueur1 = new Joueur ( 500 ) ;
+		
+		miseTest=20;
+		joueur1.setMise(miseTest) ;
+		joueur1.gagnerPerdre(-1) ;
+		assertEquals(joueur1.getCave(),480);
+
+		miseTest=50;
+		joueur1.setMise(miseTest) ;
+		joueur1.gagnerPerdre(1) ;
+		assertEquals(joueur1.getCave(),530);
+		
+		miseTest=5;
+		joueur1.setMise(miseTest) ;
+		joueur1.gagnerPerdre(1.5) ;
+		assertEquals(joueur1.getCave(),537);// La demi-unité est perdue
+
+		Joueur joueur2 = new Joueur ( 500 ) ;
+		miseTest=10000;
+		joueur2.setMise(miseTest) ;
+		joueur2.gagnerPerdre(1) ;
+		assertEquals(joueur2.getCave(),1000);
+		
+		miseTest=10000;
+		joueur2.setMise(miseTest) ;
+		joueur2.gagnerPerdre(-1) ;
+		assertEquals(joueur2.getCave(),0);
+		
 	}
 }

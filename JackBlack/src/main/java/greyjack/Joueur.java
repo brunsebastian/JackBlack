@@ -25,7 +25,7 @@ public class Joueur extends Main {
 	}
 	
 	public void gagnerPerdre ( double multiplicateurMise ) {
-		this.cave += (int) Math.round ( this.mise * Math.max ( multiplicateurMise , -1 ) ) ; // On ne peut pas deduire plus d'une fois la mise
+		this.cave += (int) Math.floor ( this.mise * Math.max ( multiplicateurMise , -1 ) ) ; // On ne peut pas deduire plus d'une fois la mise
 		this.mise = 0 ;
 	}
 	

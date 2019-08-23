@@ -163,9 +163,9 @@ public class Manche {
 				croupier.tirerCarte(sabot);
 				for (Joueur joueurActif: this.joueurs) joueurActif.tirerCarte(sabot);
 				
-				System.out.print("Sabot : " +sabot.getNombreCartes() + " ");
+				System.out.print("Sabot : " +sabot.getNombreCartesRestantes() + "  ");
 				for (int i = 0 ; i<sabot.getNombreCartesRestantes() ; i +=4) System.out.print("|");
-				for (int i = sabot.getNombreCartes(); i<312 ; i +=4) System.out.print(".");
+				for (int i = sabot.getNombreCartesRestantes(); i<sabot.getNombreCartes() ; i +=4) System.out.print(".");
 				afficherManche();
 				
 				// Cas general de la manche
