@@ -101,7 +101,7 @@ public class Navigation {
 		System.out.println(messageEgalite);
 	}
 	
-	public static void afficherMessageBlackjack() {
+	public static void afficherBlackjack() {
 		String messageBlackjack = "\r\n" + 
 				"\r\n" + 
 				"__________.__                 __         __               __     ___.         ___.          ._.\r\n" + 
