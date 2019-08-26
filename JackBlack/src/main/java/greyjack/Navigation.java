@@ -41,6 +41,11 @@ public class Navigation {
 		if(prompt == 'n') {
 			System.out.println("Blackjack Power baby !");
 			Navigation.jeu();
+		}
+		else if(prompt == 's') {
+			Scores scores = new Scores ( 10 ) ;
+			scores.afficherMeilleursScores();
+			Navigation.jeu();
 		} else if(prompt == 'q') {
 			System.out.println("La prochaine fois peut être ...");
 			start = false;
