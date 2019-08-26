@@ -119,5 +119,9 @@ public class TestMoteur {
 		joueur2.gagnerPerdre(-1) ;
 		assertEquals(joueur2.getCave(),0);
 		
+		
+		Scores scores = new Scores ( 10 ) ;
+		assertEquals ( scores.getNom(0) , "Philippe Le Grand" ) ;
+		assertEquals ( scores.getScore(0) , 1000 ) ;
 	}
 }
